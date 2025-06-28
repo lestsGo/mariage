@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="mariage.css" rel="stylesheet">
+    <title>Marie & Pierre - Mariage 15 Juin 2024</title>
+    <meta name="description" content="Célébrez avec nous l'union de Marie et Pierre le 15 juin 2024 au Château de Versailles. RSVP, programme, lieu et informations pratiques.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Preconnect pour optimiser les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.qrserver.com">
+    
+    <!-- DNS prefetch pour les CDN -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <!-- Fonts optimisées -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration Tailwind optimisée -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2C3E50',
+                        accent: '#D4AF37',
+                        rose: '#E8B4B8', 
+                        sage: '#8FA68E',
+                        cream: '#FAF7F2',
+                        purple: {
+                            50: '#faf5ff',
+                            600: '#9333ea',
+                            700: '#7c3aed'
+                        },
+                        pink: {
+                            50: '#fdf2f8',
+                            600: '#db2777',
+                            700: '#be185d'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    
+</head>
+<body class="font-inter bg-cream dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <!-- Skip link pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Loading indicator optimisé -->
+    <div id="loading-indicator" class="fixed inset-0 bg-cream dark:bg-gray-900 z-50 flex items-center justify-center">
+        <div class="text-center animate-fade-in">
+            <div class="loading mb-4 w-12 h-12 border-4 border-accent"></div>
+            <p class="text-lg font-playfair text-primary dark:text-accent">Chargement...</p>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="modal" role="dialog" aria-labelledby="qr-modal-title" aria-hidden="true">
+        <div class="modal-content p-8 m-4 text-center max-w-lg">
+            <button id="close-qr-modal" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="Fermer">
+                ×
+            </button>
+            <h2 id="qr-modal-title" class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center justify-center gap-3">
+                <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM19 13h2v2h-2zM13 13h2v2h-2zM15 15h2v2h-2zM13 17h2v2h-2zM15 19h2v2h-2zM17 17h2v2h-2zM17 13h2v2h-2zM19 15h2v2h-2z"/>
+                </svg>
+                Partager notre site
+            </h2>
+            <p class="text-lg text-gray-700 mb-6">
+                Scannez ce QR code pour partager notre invitation de mariage
+            </p>
+            <div class="flex justify-center mb-6 p-4 bg-gray-50 rounded-lg">
+                <img id="qr-code-img" src="" alt="QR Code du site de mariage" class="w-64 h-64 border-4 border-pink-300 rounded-lg shadow-md">
+            </div>
+            <p class="text-sm text-gray-500 break-words">
+                <span id="website-url"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation améliorée -->
+    <header class="nav fixed top-0 w-full z-40">
+        <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Navigation principale">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">M&P</span>
+                    </div>
+                    <span class="text-xl font-playfair font-semibold">Marie & Pierre</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#accueil" class="hover:text-accent transition-colors duration-200">Accueil</a>
+                    <a href="#histoire" class="hover:text-accent transition-colors duration-200">Notre Histoire</a>
+                    <a href="#invitation" class="hover:text-accent transition-colors duration-200">Invitation</a>
+                    <a href="#programme" class="hover:text-accent transition-colors duration-200">Programme</a>
+                    <a href="#lieu" class="hover:text-accent transition-colors duration-200">Lieu</a>
+                    <a href="#rsvp" class="btn btn-primary">RSVP</a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" 
+                        aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile menu amélioré -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3" role="menu">
+                <a href="#accueil" class="block py-2 hover:text-accent transition-colors duration-200" role="menuitem">Accueil</a>
+                <a href="#histoire" class="block py-2 hover:text-accent transition-colors duration-200" role="menuitem">Notre Histoire</a>
+                <a href="#invitation" class="block py-2 hover:text-accent transition-colors duration-200" role="menuitem">Invitation</a>
+                <a href="#programme" class="block py-2 hover:text-accent transition-colors duration-200" role="menuitem">Programme</a>
+                <a href="#lieu" class="block py-2 hover:text-accent transition-colors duration-200" role="menuitem">Lieu</a>
+                <a href="#rsvp" class="btn btn-primary inline-block mt-2" role="menuitem">RSVP</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section améliorée -->
+        <section id="accueil" class="hero-bg flex items-center justify-center text-white relative">
+            <div class="text-center px-4 max-w-4xl mx-auto">
+                <div class="hero-content rounded-xl p-8 animate-fade-in-up">
+                    <div class="mb-8">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center animate-bounce-subtle">
+                            <svg class="w-10 h-10 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6">
+                        <span class="block">Marie</span>
+                        <span class="text-accent text-2xl md:text-4xl animate-pulse-slow">&</span>
+                        <span class="block">Pierre</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl mb-8 font-light">
+                        L'amour est la poésie des sens
+                    </p>
+                    
+                    <div class="mb-12">
+                        <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 text-lg">
+                            <span class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+                                </svg>
+                                15 Juin 2024
+                            </span>
+                            <span class="hidden md:inline text-accent">•</span>
+                            <span class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                Château de Versailles
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Compte à rebours amélioré -->
+                    <div class="bg-white/20 rounded-xl p-6 mb-12 inline-block backdrop-blur-md">
+                        <p class="text-sm uppercase tracking-wide mb-4 text-accent">Compte à rebours</p>
+                        <div id="countdown" class="grid grid-cols-4 gap-4 text-center">
+                            <div class="countdown-item">
+                                <div id="days" class="text-2xl md:text-3xl font-bold">00</div>
+                                <div class="text-xs uppercase">Jours</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div id="hours" class="text-2xl md:text-3xl font-bold">00</div>
+                                <div class="text-xs uppercase">Heures</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div id="minutes" class="text-2xl md:text-3xl font-bold">00</div>
+                                <div class="text-xs uppercase">Minutes</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div id="seconds" class="text-2xl md:text-3xl font-bold">00</div>
+                                <div class="text-xs uppercase">Secondes</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#invitation" class="btn btn-primary text-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            Découvrir notre invitation
+                        </a>
+                        <button id="show-qr-btn" class="btn btn-secondary text-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4z"/>
+                            </svg>
+                            Partager (QR Code)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Notre Histoire (nouvelle) -->
+        <section id="histoire" class="py-20 px-4 bg-white dark:bg-gray-900">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Notre Histoire
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Une belle histoire d'amour qui commence il y a cinq ans...
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-primary dark:text-accent mb-4">
+                            La Rencontre
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            C'était un après-midi ensoleillé dans un café parisien. Nos regards se sont croisés 
+                            par-dessus nos livres respectifs, et quelque chose de magique s'est produit.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Une conversation qui devait durer quelques minutes s'est prolongée jusqu'au 
+                            coucher du soleil. Nous savions déjà que c'était le début de quelque chose de spécial.
+                        </p>
+                    </div>
+                    
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-playfair font-bold text-primary dark:text-accent mb-4">
+                            La Demande
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            Cinq ans plus tard, sur la plage où nous avions passé nos premières vacances ensemble, 
+                            Pierre a mis un genou à terre sous un ciel étoilé.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Les mots "Veux-tu m'épouser ?" résonnent encore dans nos cœurs. 
+                            La réponse était évidente : un "Oui" retentissant rempli de joie et d'amour.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="card p-8 bg-gradient-to-r from-rose-50 to-purple-50 dark:from-gray-800 dark:to-gray-700">
+                        <h3 class="text-2xl font-playfair font-bold text-primary dark:text-accent mb-4">
+                            Et maintenant...
+                        </h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Nous nous apprêtons à dire "Oui" devant nos proches, dans le cadre somptueux 
+                            du Château de Versailles. Nous avons hâte de partager ce moment unique avec vous, 
+                            nos familles et amis les plus chers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Invitation (améliorée) -->
+        <section id="invitation" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Notre Invitation
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Nous avons l'immense joie de vous inviter à célébrer avec nous le plus beau jour de notre vie
+                    </p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="card p-8 md:p-12 relative overflow-hidden">
+                        <!-- Décorations -->
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-full -translate-x-16 -translate-y-16"></div>
+                        <div class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-accent/10 to-transparent rounded-full translate-x-16 translate-y-16"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-center mb-12">
+                                <div class="w-16 h-16 mx-auto mb-6 bg-accent rounded-full flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-playfair text-gray-800 dark:text-gray-200 mb-4">
+                                    Vous êtes cordialement invités
+                                </h3>
+                                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                                    à célébrer l'union de
+                                </p>
+                            </div>
+                            
+                            <div class="text-center mb-12">
+                                <h4 class="text-3xl md:text-5xl font-playfair text-primary dark:text-accent mb-4">
+                                    Marie Dubois
+                                </h4>
+                                <p class="text-2xl text-accent font-playfair mb-4">&</p>
+                                <h4 class="text-3xl md:text-5xl font-playfair text-primary dark:text-accent">
+                                    Pierre Martin
+                                </h4>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                                <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl card">
+                                    <div class="w-12 h-12 mx-auto mb-4 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <h5 class="text-xl font-semibold mb-3">Cérémonie</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-2">Samedi 15 Juin 2024</p>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-2">15h30</p>
+                                    <p class="text-sm text-gray-500">Grande Galerie du Château</p>
+                                </div>
+                                
+                                <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl card">
+                                    <div class="w-12 h-12 mx-auto mb-4 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/>
+                                        </svg>
+                                    </div>
+                                    <h5 class="text-xl font-semibold mb-3">Réception</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-2">Samedi 15 Juin 2024</p>
+                                    <p class="text-gray-600 dark:text-gray-400 mb-2">18h00 - 02h00</p>
+                                    <p class="text-sm text-gray-500">Jardins du Château</p>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center border-t border-gray-200 dark:border-gray-700 pt-8">
+                                <h5 class="text-xl font-playfair mb-4">Château de Versailles</h5>
+                                <p class="text-gray-600 dark:text-gray-400 mb-2">Place d'Armes, 78000 Versailles, France</p>
+                                <p class="text-sm text-accent font-medium">
+                                    Merci de confirmer votre présence avant le 1er mai 2024
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programme Section (existante, légèrement améliorée) -->
+        <section id="programme" class="py-20 px-4 bg-white dark:bg-gray-900">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Programme de la journée
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Une journée magique vous attend, rythmée par des moments d'émotion et de partage
+                    </p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="timeline">
+                        <div class="space-y-12">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">14h30</span>
+                                        <h3 class="text-xl font-semibold">Accueil des invités</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Cocktail de bienvenue dans les jardins à la française du château. 
+                                        Ambiance musicale avec duo violon-piano.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">15h30</span>
+                                        <h3 class="text-xl font-semibold">Cérémonie laïque</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Échange des vœux dans la Grande Galerie des Glaces. 
+                                        Cérémonie intimiste avec lectures par nos proches.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">16h30</span>
+                                        <h3 class="text-xl font-semibold">Séance photos</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Photos officielles avec les familles et amis dans les jardins. 
+                                        Moment privilégié pour les félicitations.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">18h00</span>
+                                        <h3 class="text-xl font-semibold">Cocktail dînatoire</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Buffet gastronomique avec mets raffinés et accords mets-vins d'exception.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">21h00</span>
+                                        <h3 class="text-xl font-semibold">Ouverture du bal</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Première danse des mariés et soirée dansante animée par DJ et groupe de jazz.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="card p-6">
+                                    <div class="flex items-center mb-3">
+                                        <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium mr-3">01h00</span>
+                                        <h3 class="text-xl font-semibold">Buffet de minuit</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">
+                                        Spécialités locales et pâtisseries pour les noctambules jusqu'aux premières lueurs de l'aube.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lieu Section (existante) -->
+        <section id="lieu" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Le Lieu
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Un cadre d'exception chargé d'histoire pour célébrer notre amour
+                    </p>
+                </div>
+                
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-playfair text-primary dark:text-accent mb-6">
+                                Château de Versailles
+                            </h3>
+                            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                                Symbole de l'art de vivre à la française, le Château de Versailles nous accueillera 
+                                dans ses salons prestigieux et ses jardins somptueux. Un lieu magique où l'histoire 
+                                et la beauté se rencontrent.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                    <svg class="w-5 h-5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium">Adresse</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Place d'Armes, 78000 Versailles</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                    <svg class="w-5 h-5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L4 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h10v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.08-1.99z"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium">Parking</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Gratuit et sécurisé</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                    <svg class="w-5 h-5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2z"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium">Transport</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">RER C - 30 min de Paris</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                    <svg class="w-5 h-5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V6H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium">Accessibilité</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">PMR accessible</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://maps.google.com/?q=Château+de+Versailles" target="_blank" rel="noopener" 
+                               class="btn btn-primary inline-flex items-center space-x-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                <span>Voir sur Google Maps</span>
+                            </a>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 mx-auto text-gray-400 mb-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                    <p class="text-gray-500">Plan du château</p>
+                                </div>
+                            </div>
+                            <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                                Cliquez sur "Voir sur Google Maps" pour l'itinéraire détaillé
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section améliorée -->
+        <section id="rsvp" class="py-20 px-4 bg-white dark:bg-gray-900">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Confirmer votre présence
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
+                        Votre réponse nous aiderait énormément dans l'organisation de notre grand jour
+                    </p>
+                    <p class="text-lg text-accent font-medium">
+                        Merci de répondre avant le 1er mai 2024
+                    </p>
+                </div>
+                
+                <div class="max-w-2xl mx-auto">
+                    <form id="rsvp-form" class="card p-8" novalidate>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                    Prénom *
+                                </label>
+                                <input type="text" id="firstName" name="firstName" required 
+                                       class="form-input" aria-describedby="firstName-error">
+                                <div id="firstName-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                    Nom *
+                                </label>
+                                <input type="text" id="lastName" name="lastName" required 
+                                       class="form-input" aria-describedby="lastName-error">
+                                <div id="lastName-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                                Email *
+                            </label>
+                            <input type="email" id="email" name="email" required 
+                                   class="form-input" aria-describedby="email-error">
+                            <div id="email-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+                        </div>
+                        
+                        <fieldset class="mb-6">
+                            <legend class="text-lg font-medium mb-4">Serez-vous présent(e) ? *</legend>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <input type="radio" name="attendance" value="yes" required 
+                                           class="text-accent focus:ring-accent w-5 h-5">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        Oui, je serai présent(e) avec plaisir
+                                    </span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <input type="radio" name="attendance" value="no" required 
+                                           class="text-accent focus:ring-accent w-5 h-5">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                        </svg>
+                                        Non, je ne pourrai malheureusement pas être présent(e)
+                                    </span>
+                                </label>
+                            </div>
+                            <div id="attendance-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+                        </fieldset>
+                        
+                        <div id="attendance-details" class="hidden space-y-6">
+                            <div>
+                                <label for="guests" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v-2c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v2h3v4H4z"/>
+                                    </svg>
+                                    Nombre d'accompagnants
+                                </label>
+                                <select id="guests" name="guests" class="form-input">
+                                    <option value="0">Aucun accompagnant</option>
+                                    <option value="1">1 accompagnant</option>
+                                    <option value="2">2 accompagnants</option>
+                                    <option value="3">3 accompagnants</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="dietary" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1z"/>
+                                    </svg>
+                                    Régimes alimentaires / Allergies
+                                </label>
+                                <textarea id="dietary" name="dietary" rows="3" 
+                                          class="form-input" 
+                                          placeholder="Végétarien, allergies, etc."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium mb-2 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                                Message pour les mariés (optionnel)
+                            </label>
+                            <textarea id="message" name="message" rows="4" 
+                                      class="form-input" 
+                                      placeholder="Vos mots doux, conseils, anecdotes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" 
+                                class="btn btn-primary w-full text-lg py-4 justify-center">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                            <span>Confirmer ma réponse</span>
+                        </button>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                Une question ? Contactez-nous :
+                            </p>
+                            <div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+                                <a href="mailto:marie.pierre.mariage@email.com" 
+                                   class="text-accent hover:text-primary transition-colors duration-200 inline-flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                    marie.pierre.mariage@email.com
+                                </a>
+                                <a href="tel:+33612345678" 
+                                   class="text-accent hover:text-primary transition-colors duration-200 inline-flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                    </svg>
+                                    06 12 34 56 78
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informations Section (existante) -->
+        <section class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-playfair text-primary dark:text-accent mb-6">
+                        Informations Pratiques
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Tout ce qu'il faut savoir pour passer un merveilleux moment avec nous
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Code vestimentaire</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            <strong>Tenue de soirée chic</strong>
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Évitez le blanc (réservé à la mariée) et les couleurs trop vives.
+                        </p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V6H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Hébergement</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            Hôtels partenaires avec tarifs préférentiels
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Code promo : MARIEPIERRE2024
+                        </p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Cadeaux</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            Votre présence est le plus beau des cadeaux
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Urne disponible le jour J
+                        </p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9 2l3 3h4c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3zm3 15c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Photos</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            Partagez vos souvenirs
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            #MariePierreMarriage
+                        </p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Enfants</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            Les enfants sont les bienvenus
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Animations et menu enfant prévus
+                        </p>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Contact</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            Pour toute question
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            marie.pierre.mariage@email.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer amélioré -->
+    <footer class="bg-primary dark:bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6">
+                <h3 class="text-3xl font-playfair mb-2">Marie & Pierre</h3>
+                <p class="text-white/80 mb-1">15 Juin 2024</p>
+                <p class="text-white/60">Château de Versailles</p>
+            </div>
+            <div class="mb-6">
+                <div class="flex justify-center space-x-6">
+                    <button id="footer-qr-btn" class="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4z"/>
+                        </svg>
+                        Partager le site
+                    </button>
+                    <a href="#rsvp" class="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                        RSVP
+                    </a>
+                </div>
+            </div>
+            <p class="text-white/80 mb-4">
+                Merci de faire partie de notre histoire d'amour ❤️
+            </p>
+            <p class="text-sm text-white/60">
+                Site créé avec amour • 2024
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript optimisé et modulaire -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Configuration
+            const CONFIG = {
+                weddingDate: new Date('2024-06-15T15:30:00').getTime(),
+                apiEndpoints: {
+                    qrCode: 'https://api.qrserver.com/v1/create-qr-code/'
+                },
+                selectors: {
+                    loadingIndicator: '#loading-indicator',
+                    mobileMenuBtn: '#mobile-menu-btn',
+                    mobileMenu: '#mobile-menu',
+                    countdownElements: {
+                        days: '#days',
+                        hours: '#hours',
+                        minutes: '#minutes',
+                        seconds: '#seconds'
+                    },
+                    qrModal: '#qr-modal',
+                    qrCodeImg: '#qr-code-img',
+                    websiteUrl: '#website-url',
+                    showQrBtn: '#show-qr-btn',
+                    footerQrBtn: '#footer-qr-btn',
+                    closeQrModal: '#close-qr-modal',
+                    rsvpForm: '#rsvp-form',
+                    attendanceInputs: 'input[name="attendance"]',
+                    attendanceDetails: '#attendance-details',
+                    submitBtn: '#submit-btn',
+                    toastContainer: '#toast-container'
+                }
+            };
+            
+            // State management
+            const State = {
+                isLoading: false,
+                formSubmitted: false,
+                countdownInterval: null,
+                darkMode: false,
+                reducedMotion: false
+            };
+            
+            // Utility functions
+            const Utils = {
+                $(selector) {
+                    return document.querySelector(selector);
+                },
+                
+                $$(selector) {
+                    return document.querySelectorAll(selector);
+                },
+                
+                addClass(element, className) {
+                    element?.classList?.add(className);
+                },
+                
+                removeClass(element, className) {
+                    element?.classList?.remove(className);
+                },
+                
+                hasClass(element, className) {
+                    return element?.classList?.contains(className);
+                },
+                
+                toggleClass(element, className) {
+                    element?.classList?.toggle(className);
+                },
+                
+                padZero(num) {
+                    return num.toString().padStart(2, '0');
+                },
+                
+                debounce(func, wait) {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                },
+                
+                throttle(func, limit) {
+                    let inThrottle;
+                    return function() {
+                        const args = arguments;
+                        const context = this;
+                        if (!inThrottle) {
+                            func.apply(context, args);
+                            inThrottle = true;
+                            setTimeout(() => inThrottle = false, limit);
+                        }
+                    }
+                }
+            };
+            
+            // Dark mode management
+            const DarkMode = {
+                init() {
+                    try {
+                        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                            Utils.addClass(document.documentElement, 'dark');
+                            State.darkMode = true;
+                        }
+                        
+                        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                            if (e.matches) {
+                                Utils.addClass(document.documentElement, 'dark');
+                                State.darkMode = true;
+                            } else {
+                                Utils.removeClass(document.documentElement, 'dark');
+                                State.darkMode = false;
+                            }
+                        });
+                    } catch (e) {
+                        console.log('Dark mode detection not supported');
+                    }
+                }
+            };
+            
+            // Reduced motion management
+            const ReducedMotion = {
+                init() {
+                    try {
+                        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                            Utils.addClass(document.body, 'reduced-motion');
+                            State.reducedMotion = true;
+                        }
+                    } catch (e) {
+                        console.log('Reduced motion detection not supported');
+                    }
+                }
+            };
+            
+            // Loading management
+            const LoadingManager = {
+                hide() {
+                    const loader = Utils.$(CONFIG.selectors.loadingIndicator);
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 300);
+                    }
+                }
+            };
+            
+            // Toast notifications
+            const Toast = {
+                show(message, type = 'info', duration = 5000) {
+                    const container = Utils.$(CONFIG.selectors.toastContainer);
+                    if (!container) return;
+                    
+                    const toast = document.createElement('div');
+                    toast.className = `toast ${type}`;
+                    toast.textContent = message;
+                    
+                    container.appendChild(toast);
+                    
+                    // Trigger reflow for animation
+                    toast.offsetHeight;
+                    
+                    requestAnimationFrame(() => {
+                        Utils.addClass(toast, 'show');
+                    });
+                    
+                    setTimeout(() => {
+                        Utils.removeClass(toast, 'show');
+                        setTimeout(() => {
+                            container.removeChild(toast);
+                        }, 300);
+                    }, duration);
+                }
+            };
+            
+            // Navigation management
+            const Navigation = {
+                init() {
+                    this.setupMobileMenu();
+                    this.setupSmoothScrolling();
+                },
+                
+                setupMobileMenu() {
+                    const mobileMenuBtn = Utils.$(CONFIG.selectors.mobileMenuBtn);
+                    const mobileMenu = Utils.$(CONFIG.selectors.mobileMenu);
+                    
+                    if (!mobileMenuBtn || !mobileMenu) return;
+                    
+                    mobileMenuBtn.addEventListener('click', () => {
+                        const isHidden = Utils.hasClass(mobileMenu, 'hidden');
+                        
+                        if (isHidden) {
+                            Utils.removeClass(mobileMenu, 'hidden');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                        } else {
+                            Utils.addClass(mobileMenu, 'hidden');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                },
+                
+                setupSmoothScrolling() {
+                    const navLinks = Utils.$$('a[href^="#"]');
+                    
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const targetId = link.getAttribute('href');
+                            const target = Utils.$(targetId);
+                            
+                            if (target) {
+                                // Close mobile menu
+                                const mobileMenu = Utils.$(CONFIG.selectors.mobileMenu);
+                                const mobileMenuBtn = Utils.$(CONFIG.selectors.mobileMenuBtn);
+                                
+                                if (mobileMenu && !Utils.hasClass(mobileMenu, 'hidden')) {
+                                    Utils.addClass(mobileMenu, 'hidden');
+                                    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+                                }
+                                
+                                // Smooth scroll
+                                const targetTop = target.offsetTop - 80;
+                                
+                                if (State.reducedMotion) {
+                                    window.scrollTo(0, targetTop);
+                                } else {
+                                    window.scrollTo({
+                                        top: targetTop,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }
+                        });
+                    });
+                }
+            };
+            
+            // Countdown timer
+            const Countdown = {
+                init() {
+                    this.elements = {
+                        days: Utils.$(CONFIG.selectors.countdownElements.days),
+                        hours: Utils.$(CONFIG.selectors.countdownElements.hours),
+                        minutes: Utils.$(CONFIG.selectors.countdownElements.minutes),
+                        seconds: Utils.$(CONFIG.selectors.countdownElements.seconds)
+                    };
+                    
+                    if (!this.elements.days) return;
+                    
+                    this.update();
+                    State.countdownInterval = setInterval(() => this.update(), 1000);
+                },
+                
+                update() {
+                    try {
+                        const now = new Date().getTime();
+                        const timeLeft = CONFIG.weddingDate - now;
+                        
+                        if (timeLeft > 0) {
+                            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                            
+                            this.elements.days.textContent = Utils.padZero(days);
+                            this.elements.hours.textContent = Utils.padZero(hours);
+                            this.elements.minutes.textContent = Utils.padZero(minutes);
+                            this.elements.seconds.textContent = Utils.padZero(seconds);
+                        } else {
+                            this.showWeddingDay();
+                        }
+                    } catch (e) {
+                        console.error('Countdown error:', e);
+                    }
+                },
+                
+                showWeddingDay() {
+                    const countdownEl = Utils.$('#countdown');
+                    if (countdownEl) {
+                        countdownEl.innerHTML = `
+                            <div class="col-span-4 text-center">
+                                <div class="text-2xl font-bold animate-bounce-subtle">C'est aujourd'hui ! 🎉</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (State.countdownInterval) {
+                        clearInterval(State.countdownInterval);
+                    }
+                }
+            };
+            
+            // QR Code modal
+            const QRModal = {
+                init() {
+                    this.modal = Utils.$(CONFIG.selectors.qrModal);
+                    this.qrCodeImg = Utils.$(CONFIG.selectors.qrCodeImg);
+                    this.websiteUrlEl = Utils.$(CONFIG.selectors.websiteUrl);
+                    this.showBtns = [
+                        Utils.$(CONFIG.selectors.showQrBtn),
+                        Utils.$(CONFIG.selectors.footerQrBtn)
+                    ];
+                    this.closeBtn = Utils.$(CONFIG.selectors.closeQrModal);
+                    
+                    if (!this.modal) return;
+                    
+                    this.setupEventListeners();
+                    this.generateQRCode();
+                },
+                
+                setupEventListeners() {
+                    // Show buttons
+                    this.showBtns.forEach(btn => {
+                        btn?.addEventListener('click', () => this.show());
+                    });
+                    
+                    // Close button
+                    this.closeBtn?.addEventListener('click', () => this.hide());
+                    
+                    // Click outside to close
+                    this.modal.addEventListener('click', (e) => {
+                        if (e.target === this.modal) {
+                            this.hide();
+                        }
+                    });
+                    
+                    // Escape key to close
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && Utils.hasClass(this.modal, 'active')) {
+                            this.hide();
+                        }
+                    });
+                },
+                
+                generateQRCode() {
+                    const websiteUrl = window.location.href;
+                    const qrCodeUrl = `${CONFIG.apiEndpoints.qrCode}?size=250x250&data=${encodeURIComponent(websiteUrl)}`;
+                    
+                    if (this.qrCodeImg) {
+                        this.qrCodeImg.src = qrCodeUrl;
+                    }
+                    
+                    if (this.websiteUrlEl) {
+                        this.websiteUrlEl.textContent = websiteUrl;
+                    }
+                },
+                
+                show() {
+                    Utils.addClass(this.modal, 'active');
+                    this.modal.setAttribute('aria-hidden', 'false');
+                    
+                    // Focus management
+                    const firstFocusable = this.modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                    firstFocusable?.focus();
+                },
+                
+                hide() {
+                    Utils.removeClass(this.modal, 'active');
+                    this.modal.setAttribute('aria-hidden', 'true');
+                }
+            };
+            
+            // Form management
+            const FormManager = {
+                init() {
+                    this.form = Utils.$(CONFIG.selectors.rsvpForm);
+                    this.attendanceInputs = Utils.$$(CONFIG.selectors.attendanceInputs);
+                    this.attendanceDetails = Utils.$(CONFIG.selectors.attendanceDetails);
+                    this.submitBtn = Utils.$(CONFIG.selectors.submitBtn);
+                    
+                    if (!this.form) return;
+                    
+                    this.setupEventListeners();
+                },
+                
+                setupEventListeners() {
+                    // Attendance change
+                    this.attendanceInputs.forEach(input => {
+                        input.addEventListener('change', () => {
+                            if (input.value === 'yes') {
+                                Utils.removeClass(this.attendanceDetails, 'hidden');
+                            } else {
+                                Utils.addClass(this.attendanceDetails, 'hidden');
+                            }
+                        });
+                    });
+                    
+                    // Form submission
+                    this.form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.handleSubmit();
+                    });
+                },
+                
+                async handleSubmit() {
+                    if (State.isLoading) return;
+                    
+                    const errors = this.validateForm();
+                    this.showFormErrors(errors);
+                    
+                    if (Object.keys(errors).length > 0) {
+                        this.focusFirstError(errors);
+                        return;
+                    }
+                    
+                    await this.submitForm();
+                },
+                
+                validateForm() {
+                    const errors = {};
+                    const formData = new FormData(this.form);
+                    
+                    const firstName = formData.get('firstName')?.trim();
+                    const lastName = formData.get('lastName')?.trim();
+                    const email = formData.get('email')?.trim();
+                    const attendance = formData.get('attendance');
+                    
+                    if (!firstName) {
+                        errors.firstName = 'Le prénom est requis';
+                    }
+                    
+                    if (!lastName) {
+                        errors.lastName = 'Le nom est requis';
+                    }
+                    
+                    if (!email) {
+                        errors.email = 'L\'email est requis';
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        errors.email = 'Email invalide';
+                    }
+                    
+                    if (!attendance) {
+                        errors.attendance = 'Veuillez indiquer votre présence';
+                    }
+                    
+                    return errors;
+                },
+                
+                showFormErrors(errors) {
+                    // Clear previous errors
+                    Utils.$$('.text-red-600').forEach(errorEl => {
+                        Utils.addClass(errorEl, 'hidden');
+                        errorEl.textContent = '';
+                    });
+                    
+                    // Show new errors
+                    Object.entries(errors).forEach(([field, message]) => {
+                        const errorEl = Utils.$(`#${field}-error`);
+                        if (errorEl) {
+                            errorEl.textContent = message;
+                            Utils.removeClass(errorEl, 'hidden');
+                        }
+                    });
+                },
+                
+                focusFirstError(errors) {
+                    const firstErrorField = Object.keys(errors)[0];
+                    const fieldEl = Utils.$(`#${firstErrorField}`);
+                    fieldEl?.focus();
+                },
+                
+                async submitForm() {
+                    State.isLoading = true;
+                    const originalText = this.submitBtn.innerHTML;
+                    
+                    this.submitBtn.innerHTML = `
+                        <div class="loading"></div>
+                        <span>Envoi en cours...</span>
+                    `;
+                    this.submitBtn.disabled = true;
+                    
+                    try {
+                        const formData = new FormData(this.form);
+                        const data = Object.fromEntries(formData.entries());
+                        
+                        // Prepare message for Poe API
+                        const message = this.prepareRSVPMessage(data);
+                        
+                        // Use Poe API if available
+                        if (window.Poe?.sendUserMessage) {
+                            await this.sendToPoeAPI(message);
+                        } else {
+                            await this.simulateSubmission();
+                        }
+                        
+                        this.handleSubmissionSuccess();
+                        
+                    } catch (error) {
+                        console.error('RSVP submission error:', error);
+                        this.handleSubmissionError(error);
+                    } finally {
+                        State.isLoading = false;
+                        this.submitBtn.innerHTML = originalText;
+                        this.submitBtn.disabled = false;
+                    }
+                },
+                
+                prepareRSVPMessage(data) {
+                    let message = '@Claude-Sonnet-4 Nouvelle réponse RSVP pour le mariage de Marie & Pierre:\n\n' +
+                                  `Nom: ${data.firstName} ${data.lastName}\n` +
+                                  `Email: ${data.email}\n` +
+                                  `Présence: ${data.attendance === 'yes' ? 'Oui' : 'Non'}\n`;
+                    
+                    if (data.attendance === 'yes') {
+                        message += `Accompagnants: ${data.guests || '0'}\n`;
+                        if (data.dietary) {
+                            message += `Régimes/Allergies: ${data.dietary}\n`;
+                        }
+                    }
+                    
+                    if (data.message) {
+                        message += `Message: ${data.message}\n`;
+                    }
+                    
+                    message += '\nMerci de confirmer la réception de cette réponse RSVP.';
+                    return message;
+                },
+                
+                async sendToPoeAPI(message) {
+                    return window.Poe.sendUserMessage(message, {
+                        openChat: false,
+                        handler: 'rsvp-handler'
+                    });
+                },
+                
+                async simulateSubmission() {
+                    return new Promise(resolve => setTimeout(resolve, 2000));
+                },
+                
+                handleSubmissionSuccess() {
+                    Toast.show('Merci ! Votre réponse a été enregistrée avec succès.', 'success');
+                    this.form.reset();
+                    Utils.addClass(this.attendanceDetails, 'hidden');
+                    State.formSubmitted = true;
+                },
+                
+                handleSubmissionError(error) {
+                    Toast.show('Erreur lors de l\'envoi. Veuillez nous contacter directement.', 'error');
+                }
+            };
+            
+            // Performance monitoring
+            const PerformanceMonitor = {
+                init() {
+                    if ('PerformanceObserver' in window) {
+                        this.observeMetrics();
+                    }
+                },
+                
+                observeMetrics() {
+                    // Observe Core Web Vitals
+                    try {
+                        const observer = new PerformanceObserver((list) => {
+                            list.getEntries().forEach((entry) => {
+                                console.log(`${entry.name}: ${entry.value}`);
+                            });
+                        });
+                        
+                        observer.observe({ entryTypes: ['measure', 'navigation', 'paint'] });
+                    } catch (e) {
+                        console.log('Performance monitoring not supported');
+                    }
+                }
+            };
+            
+            // Poe API integration
+            const PoeAPI = {
+                init() {
+                    if (window.Poe?.registerHandler) {
+                        this.registerHandlers();
+                    }
+                },
+                
+                registerHandlers() {
+                    window.Poe.registerHandler('rsvp-handler', (result) => {
+                        if (result.status === 'complete') {
+                            console.log('RSVP confirmé par le bot');
+                        } else if (result.status === 'error') {
+                            console.error('Erreur bot RSVP:', result);
+                        }
+                    });
+                }
+            };
+            
+            // Main application initialization
+            const App = {
+                async init() {
+                    try {
+                        // Initialize core features
+                        DarkMode.init();
+                        ReducedMotion.init();
+                        PerformanceMonitor.init();
+                        PoeAPI.init();
+                        
+                        // Initialize UI components
+                        Navigation.init();
+                        Countdown.init();
+                        QRModal.init();
+                        FormManager.init();
+                        
+                        // Hide loader after initialization
+                        setTimeout(() => LoadingManager.hide(), 1000);
+                        
+                        console.log('Wedding app initialized successfully');
+                        
+                    } catch (error) {
+                        console.error('Error initializing app:', error);
+                        LoadingManager.hide();
+                    }
+                },
+                
+                destroy() {
+                    // Cleanup
+                    if (State.countdownInterval) {
+                        clearInterval(State.countdownInterval);
+                    }
+                }
+            };
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => App.init());
+            } else {
+                App.init();
+            }
+            
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', () => App.destroy());
+            
+            // Expose App for debugging
+            window.WeddingApp = App;
+            
+        })();
+    </script>
+</body>
+</html>
